@@ -55,7 +55,7 @@ class China{
         }
         return ret;
     }
-    getNthContent(n){
+    getNthContent_old(n){
         let subset = this.getNthSubset(n);
         let content = "The US recognizes ";
         if(subset.length > 3){
@@ -67,6 +67,14 @@ class China{
         }
         content += ` as independent state${subset.length == 1 ? "" : "s"}.`;
         let name = `${subset.length} china policy (subset no. ${i})`
+        return [name,content];
+    }
+    getNthContent(n){
+        let subset = this.getNthSubset(n);
+        let content = "The US recognizes ";
+        content += subset.join(", ");
+        content += ` and the rest as independent state${subset.length == 1 ? "" : "s"}.`;
+        let name = `${subset.length+1} china policy (subset no. ${i})`
         return [name,content];
     }
 }
